@@ -42,7 +42,7 @@
         </el-table-column>
       </el-table>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Отмена</el-button>
+        <el-button @click="cancelClick">Отмена</el-button>
         <el-button type="primary" @click="saveResult">Подтвердить</el-button>
       </span>
     </el-dialog>
@@ -72,6 +72,10 @@ export default {
     },
     saveResult() {
       this.$emit('result', this.tableData);
+    },
+    cancelClick() {
+      this.dialogFormVisible = false;
+      this.$emit('cancel');
     }
   },
   data() {
