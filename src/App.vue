@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <AddAutoPopup v-if="false" />
+    <EditAutoPopup :table-data="tableData" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AddAutoPopup from './components/AddAutoPopup/index';
+import EditAutoPopup from './components/EditAutoPopup/index'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    AddAutoPopup,
+    EditAutoPopup
+  },
+
+  data: () => ({
+    tableData: [
+      {"name":"Андрусяк Кирилл Артемович","startCity":"Москва","endCity":["Воронеж"],"startDate":"Mon Mar 01 2021 00:00:00 GMT+0300 (Москва, стандартное время)","endDate":"Mon Mar 15 2021 00:00:00 GMT+0300 (Москва, стандартное время)"},
+      {"name":"Андрусяк Кирилл Артемович","startCity":"Москва","endCity":["Воронеж"],"startDate":"Mon Mar 01 2021 00:00:00 GMT+0300 (Москва, стандартное время)","endDate":"Mon Mar 15 2021 00:00:00 GMT+0300 (Москва, стандартное время)"}
+    ],
+  }),
+};
+</script>
