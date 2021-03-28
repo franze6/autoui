@@ -106,11 +106,6 @@
         type: Object,
         required: false,
         default: () => {}
-      },
-      isShow: {
-        type: Boolean,
-        required: false,
-        default: false
       }
     },
     methods: {
