@@ -55,7 +55,7 @@ import AddAutoPopup from "@/components/AddAutoPopup";
 export default {
   components: {AddAutoPopup},
   props: {
-    tableData: Array
+    rows: Array
   },
   methods: {
     handleEdit(index, row) {
@@ -82,8 +82,12 @@ export default {
     return {
       dialogFormVisible: true,
       isShowEditDialog: false,
-      currentRowIndex: 0
+      currentRowIndex: 0,
+      tableData: []
     }
+  },
+  mounted() {
+    this.tableData = [...this.rows];
   }
 }
 </script>

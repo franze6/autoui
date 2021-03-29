@@ -1,7 +1,7 @@
 <template>
   <div>
     <AddAutoPopup v-if="false" />
-    <EditAutoPopup :table-data="tableData" />
+    <EditAutoPopup :rows="tableData" />
   </div>
 </template>
 

@@ -72,7 +72,7 @@
         </el-row>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Отмена</el-button>
+        <el-button @click="cancelClick">Отмена</el-button>
         <el-button type="primary" @click="saveResult">Подтвердить</el-button>
       </span>
     </el-dialog>
@@ -123,6 +123,10 @@
       saveResult() {
         this.dialogFormVisible = false;
         this.$emit('save', this.form);
+      },
+      cancelClick() {
+        this.dialogFormVisible = false;
+        this.$emit('cancel');
       }
     },
 
