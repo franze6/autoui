@@ -1,5 +1,5 @@
 <template>
-  <div :class="style.bg">
+  <div>
     <el-dialog title="Добавить водителя" :visible.sync="dialogFormVisible" width="800px" @close="$emit('close')">
       <el-form :model="form">
         <el-form-item label="ФИО водителя" :label-width="formLabelWidth">
@@ -72,14 +72,12 @@
 </template>
 
 <script>
-  import style from './style.module.css'
   import cities from '@/data/city.json'
 
   export default {
     name: 'AddAutoPopup',
     data() {
       return {
-        style,
         form: {
           name: '',
           startCity: '',
@@ -124,7 +122,6 @@
 
     mounted() {
       this.allCities = Array.from(new Set(cities.map(curr => curr.city)));
-      console.log(this.allCities);
     },
 
     watch: {
@@ -139,3 +136,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .fio_label {
+    padding-right: 18px;
+  }
+</style>

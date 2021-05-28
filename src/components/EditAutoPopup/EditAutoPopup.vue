@@ -5,6 +5,15 @@
           :data="tableData"
           style="width: 100%">
         <el-table-column
+            type="index"
+            width="50">
+        </el-table-column>
+        <el-table-column
+            prop="findString"
+            label="Имя в системе"
+            width="350">
+        </el-table-column>
+        <el-table-column
             prop="name"
             label="ФИО"
             width="250">
@@ -12,26 +21,26 @@
         <el-table-column
             prop="startCity"
             label="Город отправления"
-            width="180">
+            width="200">
         </el-table-column>
         <el-table-column
             prop="endCity"
             label="Город назначения"
             :formatter="(row, column, cellValue) => cellValue.join(', ')"
-            width="180">
+            width="200">
         </el-table-column>
         <el-table-column
             prop="startDate"
             :formatter="(row, column, cellValue) => new Date(cellValue).toLocaleDateString()"
             label="Дата погрузки"
-            width="150">
+            width="180">
         </el-table-column>
         <el-table-column
             label="Операции"
             width="150">
           <template slot-scope="scope">
-            <el-button @click="handleEdit(scope.$index, scope.row)" type="text" size="small">Изменить</el-button>
-            <el-button  @click="handleDelete(scope.$index, scope.row)" type="text" size="small">Удалить</el-button>
+            <el-button @click="handleEdit(scope.$index)" type="text" size="small">Изменить</el-button>
+            <el-button  @click="handleDelete(scope.$index)" type="text" size="small">Удалить</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -45,21 +54,20 @@
 </template>
 
 <script>
-import AddAutoPopup from "@/components/AddAutoPopup";
+import AddAutoPopup from "@/components/AddAutoPopup/AddAutoPopup";
+
 export default {
   components: {AddAutoPopup},
   props: {
     rows: Array
   },
   methods: {
-    handleEdit(index, row) {
+    handleEdit(index) {
       this.currentRowIndex = index;
       this.isShowEditDialog = true;
-      console.log(index, row);
     },
-    handleDelete(index, row) {
+    handleDelete(index) {
       this.tableData.splice(index, 1);
-      console.log(index, row);
     },
     editSave(row) {
       this.tableData.splice(this.currentRowIndex, 1, row);
@@ -77,7 +85,7 @@ export default {
       dialogFormVisible: true,
       isShowEditDialog: false,
       currentRowIndex: 0,
-      tableData: []
+      tableData: [],
     }
   },
   mounted() {
