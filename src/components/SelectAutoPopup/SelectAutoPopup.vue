@@ -3,10 +3,11 @@
     <el-dialog v-if="!isShowEditDialog" title="Выбрать водителя" :visible.sync="dialogFormVisible" width="min-content">
       <el-tabs type="card" @tab-click="tabClick">
         <el-tab-pane label="Все">
-          <AutoTable v-if="currentTabIndex === '0'" :table-data="allAuto" @change="changeSelected" is-search @start-search="startSearch" />
+          <AutoTable v-if="currentTabIndex === '0'" :table-data="allAuto" @change="changeSelected" is-search
+                     @start-search="startSearch"/>
         </el-tab-pane>
         <el-tab-pane label="Назначенные">
-          <AutoTable v-if="currentTabIndex === '1'" :table-data="addedAuto" @change="changeSelected" />
+          <AutoTable v-if="currentTabIndex === '1'" :table-data="addedAuto" @change="changeSelected"/>
         </el-tab-pane>
       </el-tabs>
       <span slot="footer" class="dialog-footer">
@@ -61,7 +62,7 @@ export default {
   watch: {
     data: {
       immediate: true,
-      handler: function(val) {
+      handler: function (val) {
         this.allAuto = val?.all || [];
         this.addedAuto = val?.added || [];
       }

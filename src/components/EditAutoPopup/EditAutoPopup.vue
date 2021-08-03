@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-dialog v-if="!isShowEditDialog" title="Редактировать водителей" :visible.sync="dialogFormVisible" width="min-content">
+    <el-dialog v-if="!isShowEditDialog" title="Редактировать водителей" :visible.sync="dialogFormVisible"
+               width="min-content">
       <el-table
           :data="tableData"
           style="width: 100%">
@@ -40,7 +41,7 @@
             width="150">
           <template slot-scope="scope">
             <el-button @click="handleEdit(scope.$index)" type="text" size="small">Изменить</el-button>
-            <el-button  @click="handleDelete(scope.$index)" type="text" size="small">Удалить</el-button>
+            <el-button @click="handleDelete(scope.$index)" type="text" size="small">Удалить</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -49,7 +50,8 @@
         <el-button type="primary" @click="saveResult">Подтвердить</el-button>
       </span>
     </el-dialog>
-    <AddAutoPopup :form-data="tableData[currentRowIndex]" :is-show="isShowEditDialog" v-else @save="editSave" @close="isShowEditDialog = false" />
+    <AddAutoPopup :form-data="tableData[currentRowIndex]" :is-show="isShowEditDialog" v-else @save="editSave"
+                  @close="isShowEditDialog = false"/>
   </div>
 </template>
 

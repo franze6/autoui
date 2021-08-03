@@ -9,19 +9,19 @@
           <el-col :span="12">
             <el-form-item label="Город отправления" :label-width="formLabelWidth">
               <el-select
-                v-model="form.startCity"
-                filterable
-                placeholder="Select"
-                allow-create
-                :filter-method="filterCity"
-                no-data-text="Введите больше символов"
-                @visible-change="(val) => val && filterCity()"
+                  v-model="form.startCity"
+                  filterable
+                  placeholder="Select"
+                  allow-create
+                  :filter-method="filterCity"
+                  no-data-text="Введите больше символов"
+                  @visible-change="(val) => val && filterCity()"
               >
                 <el-option
-                  v-for="item in cities"
-                  :key="item"
-                  :label="item"
-                  :value="item">
+                    v-for="item in cities"
+                    :key="item"
+                    :label="item"
+                    :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -29,21 +29,21 @@
           <el-col :span="12">
             <el-form-item label="Город назначения" :label-width="formLabelWidth">
               <el-select
-                v-model="form.endCity"
-                filterable
-                placeholder="Select"
-                multiple
-                allow-create
-                :filter-method="filterCity"
-                @visible-change="(val) => val && filterCity()"
-                no-data-text="Введите больше символов"
-                class="end_city"
+                  v-model="form.endCity"
+                  filterable
+                  placeholder="Select"
+                  multiple
+                  allow-create
+                  :filter-method="filterCity"
+                  @visible-change="(val) => val && filterCity()"
+                  no-data-text="Введите больше символов"
+                  class="end_city"
               >
                 <el-option
-                  v-for="item in cities"
-                  :key="item"
-                  :label="item"
-                  :value="item">
+                    v-for="item in cities"
+                    :key="item"
+                    :label="item"
+                    :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -53,10 +53,10 @@
           <el-col :span="12">
             <el-form-item label="Дата погрузки" :label-width="formLabelWidth">
               <el-date-picker
-                v-model="form.startDate"
-                type="date"
-                format="dd.MM.yyyy"
-                placeholder="Выберите дату...">
+                  v-model="form.startDate"
+                  type="date"
+                  format="dd.MM.yyyy"
+                  placeholder="Выберите дату...">
               </el-date-picker>
             </el-form-item>
           </el-col>
@@ -113,7 +113,7 @@ export default {
       }
       this.cities = this.allCities.filter(item => {
         return item.toLowerCase()
-          .indexOf(query.toLowerCase()) > -1;
+            .indexOf(query.toLowerCase()) > -1;
       });
     },
 

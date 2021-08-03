@@ -15,6 +15,6 @@ Object.keys(Components).forEach(name => {
   Vue.component(name, Components[name]);
 });
 
-Vue.use(Element, { locale });
+Vue.use(Element, {locale});
 
 export default Components;
