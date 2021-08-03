@@ -9,7 +9,7 @@
 <script>
 import AddAutoPopup from './components/AddAutoPopup/AddAutoPopup';
 import EditAutoPopup from './components/EditAutoPopup/EditAutoPopup'
-import SettingsPopup from '@/components/SettingsPopup/SettingsPopup';
+import SettingsPopup from './components/SettingsPopup/SettingsPopup';
 
 export default {
   name: 'App',

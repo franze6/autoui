@@ -37,6 +37,7 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
+    "ignorePatterns": ["**/emb_scripts/*.js"],
     "rules": {}
   },
   "browserslist": [
