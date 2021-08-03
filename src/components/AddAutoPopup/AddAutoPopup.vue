@@ -9,19 +9,19 @@
           <el-col :span="12">
             <el-form-item label="Город отправления" :label-width="formLabelWidth">
               <el-select
-                  v-model="form.startCity"
-                  filterable
-                  placeholder="Select"
-                  allow-create
-                  :filter-method="filterCity"
-                  no-data-text="Введите больше символов"
-                  @visible-change="(val) => val && filterCity()"
+                v-model="form.startCity"
+                filterable
+                placeholder="Select"
+                allow-create
+                :filter-method="filterCity"
+                no-data-text="Введите больше символов"
+                @visible-change="(val) => val && filterCity()"
               >
                 <el-option
-                    v-for="item in cities"
-                    :key="item"
-                    :label="item"
-                    :value="item">
+                  v-for="item in cities"
+                  :key="item"
+                  :label="item"
+                  :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -29,20 +29,21 @@
           <el-col :span="12">
             <el-form-item label="Город назначения" :label-width="formLabelWidth">
               <el-select
-                  v-model="form.endCity"
-                  filterable
-                  placeholder="Select"
-                  multiple
-                  allow-create
-                  :filter-method="filterCity"
-                  @visible-change="(val) => val && filterCity()"
-                  no-data-text="Введите больше символов"
+                v-model="form.endCity"
+                filterable
+                placeholder="Select"
+                multiple
+                allow-create
+                :filter-method="filterCity"
+                @visible-change="(val) => val && filterCity()"
+                no-data-text="Введите больше символов"
+                class="end_city"
               >
                 <el-option
-                    v-for="item in cities"
-                    :key="item"
-                    :label="item"
-                    :value="item">
+                  v-for="item in cities"
+                  :key="item"
+                  :label="item"
+                  :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -52,14 +53,18 @@
           <el-col :span="12">
             <el-form-item label="Дата погрузки" :label-width="formLabelWidth">
               <el-date-picker
-                  v-model="form.startDate"
-                  type="date"
-                  format="dd.MM.yyyy"
-                  placeholder="Выберите дату...">
+                v-model="form.startDate"
+                type="date"
+                format="dd.MM.yyyy"
+                placeholder="Выберите дату...">
               </el-date-picker>
             </el-form-item>
           </el-col>
           <el-col :span="12">
+            <el-form-item label="Минимальная ставка" :label-width="formLabelWidth">
+              <el-input-number v-model="form.minRate" controls-position="right" :min="1" class="min_rate"
+              ></el-input-number>
+            </el-form-item>
           </el-col>
         </el-row>
       </el-form>
@@ -72,73 +77,84 @@
 </template>
 
 <script>
-  import cities from '@/data/city.json'
+import cities from '@/data/city.json'
 
-  export default {
-    name: 'AddAutoPopup',
-    data() {
-      return {
-        form: {
-          name: '',
-          startCity: '',
-          endCity: [],
-          startDate: new Date(),
-          endDate: new Date()
-        },
-        dialogFormVisible: true,
-        formLabelWidth: '140px',
-        cities: [],
-        allCities: []
+export default {
+  name: 'AddAutoPopup',
+  data() {
+    return {
+      form: {
+        name: '',
+        startCity: '',
+        endCity: [],
+        startDate: new Date(),
+        endDate: new Date(),
+        minRate: 0
+      },
+      dialogFormVisible: true,
+      formLabelWidth: '140px',
+      cities: [],
+      allCities: []
+    }
+  },
+  props: {
+    formData: {
+      type: Object,
+      required: false,
+      default: () => {
       }
-    },
-    props: {
-      formData: {
-        type: Object,
-        required: false,
-        default: () => {}
+    }
+  },
+  methods: {
+    filterCity(query) {
+      if (!query || query.length < 2) {
+        this.cities = [];
+        return;
       }
+      this.cities = this.allCities.filter(item => {
+        return item.toLowerCase()
+          .indexOf(query.toLowerCase()) > -1;
+      });
     },
-    methods: {
-      filterCity(query) {
-        if(!query || query.length < 2) {
-          this.cities = [];
+
+    saveResult() {
+      this.dialogFormVisible = false;
+      this.$emit('save', this.form);
+    },
+    cancelClick() {
+      this.dialogFormVisible = false;
+      this.$emit('cancel');
+    }
+  },
+
+  mounted() {
+    this.allCities = Array.from(new Set(cities.map(curr => curr.city)));
+  },
+
+  watch: {
+    formData: {
+      immediate: true,
+      handler: function (val) {
+        if (!val)
           return;
-        }
-        this.cities = this.allCities.filter(item => {
-          return item.toLowerCase()
-              .indexOf(query.toLowerCase()) > -1;
-        });
-      },
-
-      saveResult() {
-        this.dialogFormVisible = false;
-        this.$emit('save', this.form);
-      },
-      cancelClick() {
-        this.dialogFormVisible = false;
-        this.$emit('cancel');
-      }
-    },
-
-    mounted() {
-      this.allCities = Array.from(new Set(cities.map(curr => curr.city)));
-    },
-
-    watch: {
-      formData: {
-        immediate: true,
-        handler: function(val) {
-          if(!val)
-            return;
-          this.form = val;
-        }
+        this.form = val;
       }
     }
   }
+}
 </script>
 
 <style scoped>
-  .fio_label {
-    padding-right: 18px;
-  }
+.fio_label {
+  padding-right: 18px;
+}
+
+.end_city {
+  width: 100%;
+}
+
+.min_rate {
+  width: 100%;
+}
+
 </style>

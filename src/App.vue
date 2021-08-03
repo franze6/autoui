@@ -1,18 +1,21 @@
 <template>
   <div>
-    <AddAutoPopup v-if="false" />
-    <EditAutoPopup :rows="tableData" />
+    <AddAutoPopup  v-if="false"/>
+    <EditAutoPopup v-if="false" :rows="tableData" />
+    <SettingsPopup></SettingsPopup>
   </div>
 </template>
 
 <script>
-import AddAutoPopup from './components/AddAutoPopup/index';
-import EditAutoPopup from './components/EditAutoPopup/index'
+import AddAutoPopup from './components/AddAutoPopup/AddAutoPopup';
+import EditAutoPopup from './components/EditAutoPopup/EditAutoPopup'
+import SettingsPopup from '@/components/SettingsPopup/SettingsPopup';
 
 export default {
   name: 'App',
 
   components: {
+    SettingsPopup,
     AddAutoPopup,
     EditAutoPopup
   },
