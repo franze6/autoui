@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name UiLib --formats umd src/build.js",
+    "build": "vue-cli-service build --target lib --name UiLib --formats umd src/build.js --inline-vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -37,7 +37,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "ignorePatterns": ["**/emb_scripts/*.js"],
+    "ignorePatterns": [
+      "**/emb_scripts/*.js"
+    ],
     "rules": {}
   },
   "browserslist": [

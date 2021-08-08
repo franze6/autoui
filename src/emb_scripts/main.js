@@ -8,14 +8,13 @@
 // @grant        none
 // ==/UserScript==
 
-(function () {
-  'use strict';
+(function() {
 
   let isAutoUpdate = false;
 
   const settings = {};
 
-  const fastTake = function () {
+  const fastTake = function() {
     $('#treeTable tbody tr').toArray().forEach(e => {
       const td = e.children[2];
       if (!td) {
@@ -29,49 +28,54 @@
       const div2 = div1.children[0];
       if (!div2)
         return;
-      const addElm = $('<a href="#" style="float:right; padding-right:15px;">Взять</a>');
+      const addElm = $(
+          '<a href="#" style="float:right; padding-right:15px;">Взять</a>');
       addElm.click(event => {
         event.stopPropagation();
         fastTakeProposal(e);
       });
       $(div2).text('').append(addElm);
     });
-  }
-
+  };
 
   $(window).load(() => {
     const enableLink = $('<a href="#">Включить автообновление</a>');
-    $(document).stopTime('controlled')
+    $(document).stopTime('controlled');
 
     Object.defineProperty(settings, 'isAutoUpdate', {
       set(val) {
         isAutoUpdate = val;
-        enableLink.text(val ? 'Выключить автообновление' : 'Включить автообновление');
-        alert(val ? 'Включено! С интервалом: ' + getAutoUpdateInterval() / 1000 : 'Выключено');
+        enableLink.text(
+            val ? 'Выключить автообновление' : 'Включить автообновление');
+        alert(val ?
+            'Включено! С интервалом: ' + getAutoUpdateInterval() / 1000 :
+            'Выключено');
         if (!val)
           return;
         setTimeout(AutoUpdate, getAutoUpdateInterval());
       },
       get() {
         return isAutoUpdate;
-      }
-    })
+      },
+    });
     enableLink.click(() => {
       settings.isAutoUpdate = !settings.isAutoUpdate;
     });
-    const intervalEditLink = $('<a href="#" style="margin-left:15px;">Изменить интервал обновления</a>');
+    const intervalEditLink = $(
+        '<a href="#" style="margin-left:15px;">Изменить интервал обновления</a>');
     intervalEditLink.click(() => {
       const currentInterval = getAutoUpdateInterval();
-      const newInterval = prompt('Интервал обновления(сек, > 0.5):', currentInterval / 1000);
-      setAutoUpdateInterval(newInterval)
-    })
-    $("#main_tdControlPanel").append(enableLink).append(intervalEditLink);
+      const newInterval = prompt('Интервал обновления(сек, > 0.5):',
+          currentInterval / 1000);
+      setAutoUpdateInterval(newInterval);
+    });
+    $('#main_tdControlPanel').append(enableLink).append(intervalEditLink);
     Ajax(false);
-    window.$eventHub.addEvent("tableFilled", fastTake);
+    window.$eventHub.addEvent('tableFilled', fastTake);
   });
 
   function start() {
-    window.$eventHub.removeEvent("PostLoaded", start);
+    window.$eventHub.removeEvent('PostLoaded', start);
     settings.isAutoUpdate = false;
     const dogSelect = $('#dog')[0];
     const auto = start.argAuto;
@@ -96,29 +100,29 @@
     if (!autoInput)
       return;
 
-    $.tnPost("RequestForTransportList.aspx", {
-      type: "ajax",
-      operation: "findauto",
-      param: {findme: auto['findString']}
-    }, function (str) {
+    $.tnPost('RequestForTransportList.aspx', {
+      type: 'ajax',
+      operation: 'findauto',
+      param: {findme: auto['findString']},
+    }, function(str) {
       let records = $.remParse(str);
       if (records.length == 0)
         return;
 
-      const aweb = $("#aweb")[0];
+      const aweb = $('#aweb')[0];
 
       aweb.value = records[0].name;
       aweb.guid = $.remParse(records[0].guid);
       GetA(aweb.guid, false);
 
-      const selectAutoFunc = function () {
-        window.$eventHub.removeEvent("PostLoaded", selectAutoFunc);
+      const selectAutoFunc = function() {
+        window.$eventHub.removeEvent('PostLoaded', selectAutoFunc);
         $('#dogovor~div button:last-child').click();
 
         setTimeout(() => {
           if (auto.isNDS) {
             const f_amount = $('#f_amount'),
-              c_amount = $('#c_amount');
+                c_amount = $('#c_amount');
             if (f_amount.length === 0 || c_amount.length === 0)
               return;
             let percent = parseInt(auto['percent']) || 25;
@@ -126,27 +130,27 @@
               return;
             const amount = (f_amount.val() / 100) * (100 - percent);
             c_amount.val(amount);
-            SetCPrice(null)
+            SetCPrice(null);
           }
 
           setTimeout(() => {
             if (auto.isNDS)
-              $("#c_price~.ui-dialog-buttonpane button:first-child").click();
+              $('#c_price~.ui-dialog-buttonpane button:first-child').click();
 
             $('#dogovor~div button:first-child').click();
 
-            if ($('#dovnumfield').length == 0 || $("#dovdatefield").length == 0)
+            if ($('#dovnumfield').length == 0 || $('#dovdatefield').length == 0)
               return;
 
-            $('#dovnumfield').val("бн");
+            $('#dovnumfield').val('бн');
 
-            $("#dovdatefield").val(new Date().toLocaleDateString().replaceAll('.', '/'));
+            $('#dovdatefield').
+                val(new Date().toLocaleDateString().replaceAll('.', '/'));
 
-            $("#dlgdoveren~.ui-dialog-buttonpane button:last-child").click();
+            $('#dlgdoveren~.ui-dialog-buttonpane button:last-child').click();
 
-
-            const finishFunc = function () {
-              window.$eventHub.removeEvent("PostLoaded", finishFunc);
+            const finishFunc = function() {
+              window.$eventHub.removeEvent('PostLoaded', finishFunc);
               //Подвержение завяки(ВЫКЛЮЧИТЬ ПРИ ТЕСТИРОВАНИИ!!!)
               //$("#dlgterminal~.ui-dialog-buttonpane button:last-child").click();
               let autoList = JSON.parse(localStorage.autoList || '[]');
@@ -155,14 +159,14 @@
 
               /*if(isAutoUpdate)
                 autoUpdateIntervalId = setInterval(AutoUpdate, getAutoUpdateInterval());*/
-            }
-            window.$eventHub.addEvent("PostLoaded", finishFunc);
+            };
+            window.$eventHub.addEvent('PostLoaded', finishFunc);
 
           });
         }, 100);
-      }
-      window.$eventHub.addEvent("PostLoaded", selectAutoFunc);
-    })
+      };
+      window.$eventHub.addEvent('PostLoaded', selectAutoFunc);
+    });
 
   }
 
@@ -186,8 +190,14 @@
   }
 
   function getProposals(cb) {
-    const params = {"type": "ajax", "operation": "getlist", "state": "ready", "number": 0, "guid": ""};
-    $.tnPostEsc("RequestForTransportList.aspx", params, result => {
+    const params = {
+      'type': 'ajax',
+      'operation': 'getlist',
+      'state': 'ready',
+      'number': 0,
+      'guid': '',
+    };
+    $.tnPostEsc('RequestForTransportList.aspx', params, result => {
       if (!result)
         return;
       const struct = $.remParse(result, false);
@@ -201,11 +211,11 @@
           endCity: values[5],
           startDate: values[7]?.value,
           autoType: values[9],
-          ...values[14]
-        }
-      })
+          ...values[14],
+        };
+      });
       setTimeout(() => cb(proposals), 100);
-    })
+    });
   }
 
   function checkProposals(proposals) {
@@ -219,10 +229,10 @@
           const startDateP = new Date(proposal.startDate).toLocaleDateString();
           const startDateA = new Date(auto.startDate).toLocaleDateString();
           return (
-            proposal.autoType === auto.autoType &&
-            proposal.startCity === auto.startCity &&
-            startDateA === startDateP &&
-            auto.endCity.includes(proposal.endCity)
+              proposal.autoType === auto.autoType &&
+              proposal.startCity === auto.startCity &&
+              startDateA === startDateP &&
+              auto.endCity.includes(proposal.endCity)
           );
         });
 
@@ -233,10 +243,10 @@
         GetInfo({
           Guid: proposal.guid,
           TypeName: proposal.name,
-          type: "RemRef"
+          type: 'RemRef',
         });
         start.argAuto = candidate;
-        window.$eventHub.addEvent("PostLoaded", start);
+        window.$eventHub.addEvent('PostLoaded', start);
       });
       if (settings.isAutoUpdate && !finded)
         setTimeout(AutoUpdate, getAutoUpdateInterval());
@@ -246,32 +256,33 @@
   }
 
   function findAutoByArg(search, cb) {
-    $.tnPostEsc("RequestForTransportList.aspx", {
-        type: 'ajax',
-        operation: 'getlist',
-        state: 'auto',
-        number: 0,
-        guid: '',
-        search
-      },
-      (function (str) {
-        const struct = $.remParse(str, false);
-        const data = struct?.['СписокДокументов']?.rows;
-        if (!data)
-          cb.call(this, []);
-        const result = data.map(({values}) => {
-          return {
-            name: values[2].trim(),
-            findString: values[1].trim(),
-            isNDS: !!values[4]
-          };
-        })
-        cb.call(this, result)
-      }).bind(this))
+    $.tnPostEsc('RequestForTransportList.aspx', {
+          type: 'ajax',
+          operation: 'getlist',
+          state: 'auto',
+          number: 0,
+          guid: '',
+          search,
+        },
+        (function(str) {
+          const struct = $.remParse(str, false);
+          const data = struct?.['СписокДокументов']?.rows;
+          if (!data)
+            cb.call(this, []);
+          const result = data.map(({values}) => {
+            return {
+              name: values[2].trim(),
+              findString: values[1].trim(),
+              isNDS: !!values[4],
+            };
+          });
+          cb.call(this, result);
+        }).bind(this));
   }
 
   function fastTakeProposal(proposal) {
-    const vueElm = $('<select-auto-popup :data="data" @cancel="cancelClick" @save-result="saveHandle" @start-search="startSearch"></select-auto-popup>');
+    const vueElm = $(
+        '<select-auto-popup :data="data" @cancel="cancelClick" @save-result="saveHandle" @start-search="startSearch"></select-auto-popup>');
     $('body').append(vueElm);
 
     const VuePopup = new Vue({
@@ -279,41 +290,41 @@
       data: {
         data: {
           all: [],
-          added: JSON.parse(localStorage.autoList || '[]')
-        }
+          added: JSON.parse(localStorage.autoList || '[]'),
+        },
       },
       methods: {
-        saveHandle: function (val) {
+        saveHandle: function(val) {
           setTimeout(() => {
             GetInfo(proposal.documentRef);
             start.argAuto = val;
-            window.$eventHub.addEvent("PostLoaded", start);
-          }, 0)
+            window.$eventHub.addEvent('PostLoaded', start);
+          }, 0);
           this.$destroy();
           $(this.$el).remove();
         },
-        cancelClick: function () {
+        cancelClick: function() {
           this.$destroy();
           $(this.$el).remove();
         },
-        startSearch: function (type, value) {
+        startSearch: function(type, value) {
           let searchArg = {
             Автомобиль: '',
             Водитель: '',
-          }
+          };
           if (type === 'fio') {
             searchArg.Водитель = value;
           } else {
             searchArg.Автомобиль = value;
           }
           var that = this;
-          findAutoByArg.call(this, searchArg, function (result) {
+          findAutoByArg.call(this, searchArg, function(result) {
             if (!result)
               return;
             this.data = {all: [...result], added: [...this.data.added]};
-          })
-        }
-      }
+          });
+        },
+      },
     });
   }
 })();

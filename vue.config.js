@@ -1,7 +1,7 @@
 module.exports = {
-    css: { extract: false },
-    devServer: {
-        host: 'localhost'
-    }
-}
+  css: {extract: false},
+  devServer: {
+    host: 'localhost',
+  },
+};
 
