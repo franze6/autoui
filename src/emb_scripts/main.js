@@ -61,15 +61,37 @@
     enableLink.click(() => {
       settings.isAutoUpdate = !settings.isAutoUpdate;
     });
-    const intervalEditLink = $(
-        '<a href="#" style="margin-left:15px;">Изменить интервал обновления</a>');
-    intervalEditLink.click(() => {
-      const currentInterval = getAutoUpdateInterval();
-      const newInterval = prompt('Интервал обновления(сек, > 0.5):',
-          currentInterval / 1000);
-      setAutoUpdateInterval(newInterval);
+
+    const settingsEditLink = $(
+        '<a href="#" style="margin-left:15px;">Настройки</a>');
+    settingsEditLink.click(() => {
+      const vueElm = $(
+          '<settings-popup :form-data="data" @cancel="cancelClick" @save="saveHandle"></settings-popup>');
+      $('body').append(vueElm);
+
+      new Vue({
+        el: vueElm[0],
+        data: {
+          data: JSON.parse(localStorage.settings || '{}'),
+        },
+        methods: {
+          saveHandle: function(val) {
+            localStorage.setItem('settings', JSON.stringify(val));
+            this.$destroy();
+            $(this.$el).remove();
+          }
+          ,
+          cancelClick: function() {
+            this.$destroy();
+            $(this.$el).remove();
+          }
+          ,
+        }
+        ,
+      });
     });
-    $('#main_tdControlPanel').append(enableLink).append(intervalEditLink);
+
+    $('#main_tdControlPanel').append(enableLink).append(settingsEditLink);
     Ajax(false);
     window.$eventHub.addEvent('tableFilled', fastTake);
   });
@@ -180,7 +202,15 @@
   }
 
   function getAutoUpdateInterval() {
-    return localStorage.autoUpdateInterval || 1000;
+    return (getSettings()?.intervalTime || 1) * 1000;
+  }
+
+  function getSettings() {
+    return JSON.parse(localStorage.settings || '{}');
+  }
+
+  function getRentPercent() {
+    return getSettings()?.percent || 7;
   }
 
   function AutoUpdate() {

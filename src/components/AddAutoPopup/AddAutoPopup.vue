@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-dialog title="Добавить водителя" :visible.sync="dialogFormVisible" width="800px" @close="$emit('close')">
+    <el-dialog title="Добавить водителя" :visible.sync="dialogFormVisible" width="850px" @close="$emit('close')">
       <el-form :model="form">
         <el-form-item label="ФИО водителя" :label-width="formLabelWidth">
           <el-input v-model="form.name" disabled autosize></el-input>
@@ -9,19 +9,19 @@
           <el-col :span="12">
             <el-form-item label="Город отправления" :label-width="formLabelWidth">
               <el-select
-                  v-model="form.startCity"
-                  filterable
-                  placeholder="Select"
-                  allow-create
-                  :filter-method="filterCity"
-                  no-data-text="Введите больше символов"
-                  @visible-change="(val) => val && filterCity()"
+                v-model="form.startCity"
+                filterable
+                placeholder="Select"
+                allow-create
+                :filter-method="filterCity"
+                no-data-text="Введите больше символов"
+                @visible-change="(val) => val && filterCity()"
               >
                 <el-option
-                    v-for="item in cities"
-                    :key="item"
-                    :label="item"
-                    :value="item">
+                  v-for="item in cities"
+                  :key="item"
+                  :label="item"
+                  :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -29,21 +29,21 @@
           <el-col :span="12">
             <el-form-item label="Город назначения" :label-width="formLabelWidth">
               <el-select
-                  v-model="form.endCity"
-                  filterable
-                  placeholder="Select"
-                  multiple
-                  allow-create
-                  :filter-method="filterCity"
-                  @visible-change="(val) => val && filterCity()"
-                  no-data-text="Введите больше символов"
-                  class="end_city"
+                v-model="form.endCity"
+                filterable
+                placeholder="Select"
+                multiple
+                allow-create
+                :filter-method="filterCity"
+                @visible-change="(val) => val && filterCity()"
+                no-data-text="Введите больше символов"
+                class="end_city"
               >
                 <el-option
-                    v-for="item in cities"
-                    :key="item"
-                    :label="item"
-                    :value="item">
+                  v-for="item in cities"
+                  :key="item"
+                  :label="item"
+                  :value="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -53,10 +53,10 @@
           <el-col :span="12">
             <el-form-item label="Дата погрузки" :label-width="formLabelWidth">
               <el-date-picker
-                  v-model="form.startDate"
-                  type="date"
-                  format="dd.MM.yyyy"
-                  placeholder="Выберите дату...">
+                v-model="form.startDate"
+                type="date"
+                format="dd.MM.yyyy"
+                placeholder="Выберите дату...">
               </el-date-picker>
             </el-form-item>
           </el-col>
@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import cities from '@/data/city.json'
+import cities from '@/data/city.json';
 
 export default {
   name: 'AddAutoPopup',
@@ -89,21 +89,21 @@ export default {
         endCity: [],
         startDate: new Date(),
         endDate: new Date(),
-        minRate: 0
+        minRate: 0,
       },
       dialogFormVisible: true,
-      formLabelWidth: '140px',
+      formLabelWidth: '160px',
       cities: [],
-      allCities: []
-    }
+      allCities: [],
+    };
   },
   props: {
     formData: {
       type: Object,
       required: false,
       default: () => {
-      }
-    }
+      },
+    },
   },
   methods: {
     filterCity(query) {
@@ -112,8 +112,7 @@ export default {
         return;
       }
       this.cities = this.allCities.filter(item => {
-        return item.toLowerCase()
-            .indexOf(query.toLowerCase()) > -1;
+        return item.toLowerCase().indexOf(query.toLowerCase()) > -1;
       });
     },
 
@@ -124,7 +123,7 @@ export default {
     cancelClick() {
       this.dialogFormVisible = false;
       this.$emit('cancel');
-    }
+    },
   },
 
   mounted() {
@@ -134,14 +133,14 @@ export default {
   watch: {
     formData: {
       immediate: true,
-      handler: function (val) {
+      handler: function(val) {
         if (!val)
           return;
         this.form = val;
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>

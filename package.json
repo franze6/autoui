@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name UiLib --formats umd src/build.js --inline-vue",
+    "build": "vue-cli-service build --target lib --name UiLib --formats umd src/build.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

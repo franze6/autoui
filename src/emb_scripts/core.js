@@ -64,10 +64,10 @@
   $(window).load(() => {
     $('head').
         append($('<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>'));
-    // $('head').append($('<script src="https://github.com/franze6/autoui/releases/download/pilot/UiLib.umd.js"></script>'));
     $('head').
         append(
-            $('<script src="file:///C:\\Data\\Projects\\autoui\\dist\\UiLib.umd.js"></script>'));
+            $('<script src="https://github.com/franze6/autoui/releases/download/pilot/UiLib.umd.js"></script>'));
+
     $('head').
         append(
             $('<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">'));

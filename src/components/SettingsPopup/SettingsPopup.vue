@@ -29,13 +29,20 @@
 <script>
 export default {
   name: 'SettingsPopup',
+  props: {
+    formData: {
+      type: Object,
+      default: () => {
+      },
+    },
+  },
   data: () => ({
     dialogFormVisible: true,
-    formLabelWidth: '200px',
+    formLabelWidth: '220px',
     form: {
       intervalTime: 1,
       percent: 7,
-    }
+    },
   }),
   methods: {
     saveResult() {
@@ -45,9 +52,18 @@ export default {
     cancelClick() {
       this.dialogFormVisible = false;
       this.$emit('cancel');
-    }
-  }
-}
+    },
+  },
+  watch: {
+    formData: {
+      immediate: true,
+      deep: true,
+      handler(val) {
+        this.form = val;
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>
