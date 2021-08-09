@@ -297,6 +297,17 @@ module.exports = !$assign || __webpack_require__("4b8b")(function () {
 
 /***/ }),
 
+/***/ "077a":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_9b98cd1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7fca");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_9b98cd1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_9b98cd1e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+
+
+/***/ }),
+
 /***/ "0983":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1201,17 +1212,6 @@ module.exports = function (METHOD_NAME) {
     return array[METHOD_NAME](Boolean).foo !== 1;
   });
 };
-
-
-/***/ }),
-
-/***/ "1f36":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_0327701c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("fb14");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_0327701c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddAutoPopup_vue_vue_type_style_index_0_id_0327701c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
 
 
 /***/ }),
@@ -53647,6 +53647,20 @@ exports.default = aria.Dialog;
 
 /***/ }),
 
+/***/ "72dc":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".fio_label[data-v-9b98cd1e]{padding-right:18px}.end_city[data-v-9b98cd1e],.min_rate[data-v-9b98cd1e]{width:100%}", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "7418":
 /***/ (function(module, exports) {
 
@@ -54336,6 +54350,22 @@ checkbox_group.install = function (Vue) {
 /***/ })
 
 /******/ });
+
+/***/ }),
+
+/***/ "7fca":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("72dc");
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("0bf9651e", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -55735,20 +55765,6 @@ var UserAgent_DEPRECATED = {
 };
 
 module.exports = UserAgent_DEPRECATED;
-
-
-/***/ }),
-
-/***/ "8f85":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, ".fio_label[data-v-0327701c]{padding-right:18px}.end_city[data-v-0327701c],.min_rate[data-v-0327701c]{width:100%}", ""]);
-// Exports
-module.exports = exports;
 
 
 /***/ }),
@@ -65363,22 +65379,6 @@ module.exports = !__webpack_require__("0bad") && !__webpack_require__("4b8b")(fu
 
 /***/ }),
 
-/***/ "fb14":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("8f85");
-if(content.__esModule) content = content.default;
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__("499e").default
-var update = add("45db2a5b", content, true, {"sourceMap":false,"shadowMode":false});
-
-/***/ }),
-
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65420,12 +65420,12 @@ var es_object_keys = __webpack_require__("b64b");
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"186763fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=template&id=0327701c&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-dialog',{attrs:{"title":"Добавить водителя","visible":_vm.dialogFormVisible,"width":"850px"},on:{"update:visible":function($event){_vm.dialogFormVisible=$event},"close":function($event){return _vm.$emit('close')}}},[_c('el-form',{attrs:{"model":_vm.form}},[_c('el-form-item',{attrs:{"label":"ФИО водителя","label-width":_vm.formLabelWidth}},[_c('el-input',{attrs:{"disabled":"","autosize":""},model:{value:(_vm.form.name),callback:function ($$v) {_vm.$set(_vm.form, "name", $$v)},expression:"form.name"}})],1),_c('el-row',[_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Город отправления","label-width":_vm.formLabelWidth}},[_c('el-select',{attrs:{"filterable":"","placeholder":"Select","allow-create":"","filter-method":_vm.filterCity,"no-data-text":"Введите больше символов"},on:{"visible-change":function (val) { return val && _vm.filterCity(); }},model:{value:(_vm.form.startCity),callback:function ($$v) {_vm.$set(_vm.form, "startCity", $$v)},expression:"form.startCity"}},_vm._l((_vm.cities),function(item){return _c('el-option',{key:item,attrs:{"label":item,"value":item}})}),1)],1)],1),_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Город назначения","label-width":_vm.formLabelWidth}},[_c('el-select',{staticClass:"end_city",attrs:{"filterable":"","placeholder":"Select","multiple":"","allow-create":"","filter-method":_vm.filterCity,"no-data-text":"Введите больше символов"},on:{"visible-change":function (val) { return val && _vm.filterCity(); }},model:{value:(_vm.form.endCity),callback:function ($$v) {_vm.$set(_vm.form, "endCity", $$v)},expression:"form.endCity"}},_vm._l((_vm.cities),function(item){return _c('el-option',{key:item,attrs:{"label":item,"value":item}})}),1)],1)],1)],1),_c('el-row',[_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Дата погрузки","label-width":_vm.formLabelWidth}},[_c('el-date-picker',{attrs:{"type":"date","format":"dd.MM.yyyy","placeholder":"Выберите дату..."},model:{value:(_vm.form.startDate),callback:function ($$v) {_vm.$set(_vm.form, "startDate", $$v)},expression:"form.startDate"}})],1)],1),_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Минимальная ставка","label-width":_vm.formLabelWidth}},[_c('el-input-number',{staticClass:"min_rate",attrs:{"controls-position":"right","min":1},model:{value:(_vm.form.minRate),callback:function ($$v) {_vm.$set(_vm.form, "minRate", $$v)},expression:"form.minRate"}})],1)],1)],1)],1),_c('span',{staticClass:"dialog-footer",attrs:{"slot":"footer"},slot:"footer"},[_c('el-button',{on:{"click":_vm.cancelClick}},[_vm._v("Отмена")]),_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.saveResult}},[_vm._v("Подтвердить")])],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"186763fe-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=template&id=9b98cd1e&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('el-dialog',{attrs:{"title":"Добавить водителя","visible":_vm.dialogFormVisible,"width":"850px"},on:{"update:visible":function($event){_vm.dialogFormVisible=$event},"close":function($event){return _vm.$emit('close')}}},[_c('el-form',{attrs:{"model":_vm.form}},[_c('el-form-item',{attrs:{"label":"ФИО водителя","label-width":_vm.formLabelWidth}},[_c('el-input',{attrs:{"disabled":"","autosize":""},model:{value:(_vm.form.name),callback:function ($$v) {_vm.$set(_vm.form, "name", $$v)},expression:"form.name"}})],1),_c('el-row',[_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Город отправления","label-width":_vm.formLabelWidth}},[_c('el-select',{attrs:{"filterable":"","placeholder":"Select","allow-create":"","filter-method":_vm.filterCity,"no-data-text":"Введите больше символов"},on:{"visible-change":function (val) { return val && _vm.filterCity(); }},model:{value:(_vm.form.startCity),callback:function ($$v) {_vm.$set(_vm.form, "startCity", $$v)},expression:"form.startCity"}},_vm._l((_vm.cities),function(item){return _c('el-option',{key:item,attrs:{"label":item,"value":item}})}),1)],1)],1),_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Город назначения","label-width":_vm.formLabelWidth}},[_c('el-select',{staticClass:"end_city",attrs:{"filterable":"","placeholder":"Select","multiple":"","allow-create":"","filter-method":_vm.filterCity,"no-data-text":"Введите больше символов"},on:{"visible-change":function (val) { return val && _vm.filterCity(); }},model:{value:(_vm.form.endCity),callback:function ($$v) {_vm.$set(_vm.form, "endCity", $$v)},expression:"form.endCity"}},_vm._l((_vm.cities),function(item){return _c('el-option',{key:item,attrs:{"label":item,"value":item}})}),1)],1)],1)],1),_c('el-row',[_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Дата погрузки","label-width":_vm.formLabelWidth}},[_c('el-date-picker',{attrs:{"type":"date","format":"dd.MM.yyyy","placeholder":"Выберите дату..."},model:{value:(_vm.form.startDate),callback:function ($$v) {_vm.$set(_vm.form, "startDate", $$v)},expression:"form.startDate"}})],1)],1),_c('el-col',{attrs:{"span":12}},[_c('el-form-item',{attrs:{"label":"Минимальная ставка","label-width":_vm.formLabelWidth}},[_c('el-input-number',{staticClass:"min_rate",attrs:{"controls-position":"right","min":0},model:{value:(_vm.form.minRate),callback:function ($$v) {_vm.$set(_vm.form, "minRate", $$v)},expression:"form.minRate"}})],1)],1)],1)],1),_c('span',{staticClass:"dialog-footer",attrs:{"slot":"footer"},slot:"footer"},[_c('el-button',{on:{"click":_vm.cancelClick}},[_vm._v("Отмена")]),_c('el-button',{attrs:{"type":"primary"},on:{"click":_vm.saveResult}},[_vm._v("Подтвердить")])],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=template&id=0327701c&scoped=true&
+// CONCATENATED MODULE: ./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=template&id=9b98cd1e&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
@@ -65604,8 +65604,8 @@ var city = __webpack_require__("a6e4");
 });
 // CONCATENATED MODULE: ./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=script&lang=js&
  /* harmony default export */ var AddAutoPopup_AddAutoPopupvue_type_script_lang_js_ = (AddAutoPopupvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=style&index=0&id=0327701c&scoped=true&lang=css&
-var AddAutoPopupvue_type_style_index_0_id_0327701c_scoped_true_lang_css_ = __webpack_require__("1f36");
+// EXTERNAL MODULE: ./src/components/AddAutoPopup/AddAutoPopup.vue?vue&type=style&index=0&id=9b98cd1e&scoped=true&lang=css&
+var AddAutoPopupvue_type_style_index_0_id_9b98cd1e_scoped_true_lang_css_ = __webpack_require__("077a");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -65722,7 +65722,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "0327701c",
+  "9b98cd1e",
   null
   
 )

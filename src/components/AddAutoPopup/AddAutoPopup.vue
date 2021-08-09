@@ -62,7 +62,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="Минимальная ставка" :label-width="formLabelWidth">
-              <el-input-number v-model="form.minRate" controls-position="right" :min="1" class="min_rate"
+              <el-input-number v-model="form.minRate" controls-position="right" :min="0" class="min_rate"
               ></el-input-number>
             </el-form-item>
           </el-col>

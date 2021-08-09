@@ -12,7 +12,8 @@
   $(window).load(() => {
     $eventHub.addEvent('PostLoaded', addModeOn);
     addModeOn();
-    const enableLink = $('<a href="#">Включить режим добавления водителей</a>');
+    const enableLink = $(
+        '<a href="#" style="margin-left: 20px;">Включить режим добавления водителей</a>');
     const autoEditLink = $(
         '<a href="#" style="margin-left: 20px;">Редактировать водителей</a>');
     enableLink.click(() => {
@@ -97,6 +98,7 @@
             data: {
               data: {
                 name: call['ВодительWEBText'],
+                minRate: 0,
               },
             },
             methods: {
@@ -107,7 +109,6 @@
                   findString: call['АвтотранспортWEBText'],
                   fillType: call['ТипЗагрузкиWEB'],
                   autoType: call['ВидТСWEB']['Text'],
-                  isNDS: !!call['СобственникТС']['Text'],
                   ...val,
                 };
                 const localJSON = localStorage['autoList'] || '[]';

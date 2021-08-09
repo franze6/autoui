@@ -128,7 +128,7 @@
       param: {findme: auto['findString']},
     }, function(str) {
       let records = $.remParse(str);
-      if (records.length == 0)
+      if (records.length === 0)
         return;
 
       const aweb = $('#aweb')[0];
@@ -142,22 +142,27 @@
         $('#dogovor~div button:last-child').click();
 
         setTimeout(() => {
-          if (auto.isNDS) {
-            const f_amount = $('#f_amount'),
-                c_amount = $('#c_amount');
-            if (f_amount.length === 0 || c_amount.length === 0)
-              return;
-            let percent = parseInt(auto['percent']) || 25;
-            if (!percent)
-              return;
-            const amount = (f_amount.val() / 100) * (100 - percent);
-            c_amount.val(amount);
-            SetCPrice(null);
-          }
+
+          debugger;
+          const isNDS = $('#c_ndss')?.val() !== 'Без НДС';
+
+          const {minRate} = auto,
+              f_amount = $('#f_amount'),
+              c_amount = $('#c_amount');
+
+          if (f_amount.length === 0 || c_amount.length === 0)
+            return;
+
+          let percent = getRentPercent() || 7;
+          let ndsper = isNDS ? 0 : 20;
+
+          const amount = (f_amount.val() / 10000) * (100 - percent) *
+              (100 - ndsper);
+          c_amount.val(minRate || Math.floor(amount / 500) * 500);
+          SetCPrice(null);
 
           setTimeout(() => {
-            if (auto.isNDS)
-              $('#c_price~.ui-dialog-buttonpane button:first-child').click();
+            $('#c_price~.ui-dialog-buttonpane button:first-child').click();
 
             $('#dogovor~div button:first-child').click();
 
@@ -173,14 +178,14 @@
 
             const finishFunc = function() {
               window.$eventHub.removeEvent('PostLoaded', finishFunc);
-              //Подвержение завяки(ВЫКЛЮЧИТЬ ПРИ ТЕСТИРОВАНИИ!!!)
-              //$("#dlgterminal~.ui-dialog-buttonpane button:last-child").click();
-              let autoList = JSON.parse(localStorage.autoList || '[]');
-              autoList = autoList.filter(e => e.findString !== auto.findString);
-              localStorage.setItem('autoList', JSON.stringify(autoList));
 
-              /*if(isAutoUpdate)
-                autoUpdateIntervalId = setInterval(AutoUpdate, getAutoUpdateInterval());*/
+              $('#dlgterminal~.ui-dialog-buttonpane button:last-child').
+                  click(() => {
+                    let autoList = JSON.parse(localStorage.autoList || '[]');
+                    autoList = autoList.filter(
+                        e => e.findString !== auto.findString);
+                    localStorage.setItem('autoList', JSON.stringify(autoList));
+                  });
             };
             window.$eventHub.addEvent('PostLoaded', finishFunc);
 
@@ -190,15 +195,6 @@
       window.$eventHub.addEvent('PostLoaded', selectAutoFunc);
     });
 
-  }
-
-  function setAutoUpdateInterval(val) {
-    const parsed = parseFloat(val);
-    if (isNaN(parsed) || parsed < 0.5) {
-      alert('Не верное время!');
-      return;
-    }
-    localStorage.setItem('autoUpdateInterval', parsed * 1000);
   }
 
   function getAutoUpdateInterval() {
@@ -241,6 +237,7 @@
           endCity: values[5],
           startDate: values[7]?.value,
           autoType: values[9],
+          rate: values[13],
           ...values[14],
         };
       });
@@ -262,7 +259,8 @@
               proposal.autoType === auto.autoType &&
               proposal.startCity === auto.startCity &&
               startDateA === startDateP &&
-              auto.endCity.includes(proposal.endCity)
+              auto.endCity.includes(proposal.endCity) &&
+              proposal.rate * 0.98 >= auto.minRate * 1.2
           );
         });
 
