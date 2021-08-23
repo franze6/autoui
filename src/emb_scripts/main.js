@@ -154,7 +154,7 @@
             return;
 
           let percent = getRentPercent() || 7;
-          let ndsper = isNDS ? 0 : 20;
+          let ndsper = isNDS ? 0 : 17;
 
           const amount = (f_amount.val() / 10000) * (100 - percent) *
               (100 - ndsper);
@@ -234,7 +234,7 @@
         return {
           id: values[2],
           startCity: values[4],
-          endCity: values[5],
+          endCity: values[6],
           startDate: values[7]?.value,
           autoType: values[9],
           rate: values[13],
@@ -259,7 +259,7 @@
               proposal.autoType === auto.autoType &&
               proposal.startCity === auto.startCity &&
               startDateA === startDateP &&
-              auto.endCity.includes(proposal.endCity) &&
+              auto.endCity.some(e => proposal.endCity.indexOf(e) !== -1) &&
               proposal.rate * 0.98 >= auto.minRate * 1.2
           );
         });
